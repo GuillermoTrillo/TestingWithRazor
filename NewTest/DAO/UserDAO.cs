@@ -5,11 +5,12 @@ namespace NewTest.DAO
     public class UserDAO
     {
         private List<User> Userlist = new List<User>();
-        private int recentId = 0;
+        private int recentId;
         public void defineNewUser(string newPassword, string newUserName)
         {
-            User newUser = new User();
             defineRecentId();
+            Console.WriteLine(Userlist);
+            User newUser = new User();
             newUser.idUser = recentId;
             newUser.userName = newUserName;
             newUser.password = newPassword;
@@ -18,13 +19,12 @@ namespace NewTest.DAO
         }
         private void defineRecentId()
         {
-            if (recentId != 0)
-            {
-                recentId = recentId + 1;
-            }
+            recentId++;
         }
+
         private void addNewUserToList(User newUser)
         {
+            
             Userlist.Add(newUser);
         }
         public List<User> getList()
